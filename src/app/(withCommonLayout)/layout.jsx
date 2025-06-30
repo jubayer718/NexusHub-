@@ -1,7 +1,6 @@
-import Footer from "@/components/layout/Footer";
-import Navbar from "@/components/layout/Navbar";
 
-
+import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
 
 
 const CommonLayout = async ({ children }) => {

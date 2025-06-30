@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useContext, useEffect } from "react";
 import Logo from "../../app/assets/svgs/Logo";
 import { useUser } from "../../context/UserContext";
 import { usePathname } from "next/navigation";
@@ -8,9 +9,19 @@ import useAdmin from "../Admin/useAdmin";
 const Navbar = () => {
   const { user, logOut, loading } = useUser();
   const pathName = usePathname();
-  const [admin, isAdminLoading, refetch, error] = useAdmin();
- 
- 
+  const [admin, isAdminLoading, reface] = useAdmin();
+
+  useEffect(() => {
+    reface();
+  }, []);
+
+  if (isAdminLoading || loading) {
+    return (
+      <div className="flex items-center justify-center my-12">
+        <span className="loading loading-bars loading-xl"></span>
+      </div>
+    );
+  }
 
   const NavLink = [
     { name: "Home", path: "/" },
